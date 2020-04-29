@@ -17,6 +17,8 @@ module.exports = {
     // 'space-before-function-paren': 'off',
     'curly': 0, // 允许单行if无{}
     'vue/singleline-html-element-content-newline': 0, // 允许html标签在一行
+    'space-before-function-paren': 0,
+    'eol-last': 0,
     'arrow-parens': ["error", "as-needed"] // 单个参数箭头函数省略括号
   }
 }
