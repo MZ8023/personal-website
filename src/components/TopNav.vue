@@ -3,12 +3,12 @@
     <div class="top-nav-poster-warpper">
       <div class="top-nav-poster d-flex justify-space-between align-center">
         <div class="top-nav-left-info">
-          <p class="top-nav-left-info-title">{{ topNavInfo.title }}</p>
-          <p class="top-nav-left-info-comment">{{ topNavInfo.comment }}</p>
+          <p class="top-nav-left-info-title">{{ topNav.topNavInfo.title }}</p>
+          <p class="top-nav-left-info-comment">{{ topNav.topNavInfo.comment }}</p>
         </div>
         <div class="top-nav-right-keyword d-flex justify-space-between align-center">
           <p
-            v-for="item in topNavInfo.keyWords"
+            v-for="item in topNav.topNavInfo.keyWords"
             :key="item.text"
             :style="{ 'background': item.background, 'color': item.color }"
           >{{ item.text }}</p>
@@ -19,9 +19,10 @@
       <div class="top-nav-bar d-flex">
         <p
           v-for="item in topNavBar"
-          :key="item"
+          :key="item.title"
           class="top-nav-bar-item"
-        >{{ item }}</p>
+          @click="scrollTo(item.class)"
+        >{{ item.title }}</p>
       </div>
     </div>
   </div>
@@ -33,6 +34,19 @@ export default {
   mixins: [topNavMixin],
   data () {
     return {
+      topNavBar: [
+        { title: '基本信息', class: '.base-info-warpper' },
+        { title: '商品详情', class: '.detail-detail-title' },
+        { title: '计算机能力', class: '.detail-ability-title' },
+        { title: '自我评价', class: '.detail-evaluate-title' },
+        { title: '项目经历', class: '.detail-project-title' },
+        { title: '联系方式', class: '.detail-contact-title' }
+      ]
+    }
+  },
+  methods: {
+    scrollTo (className) {
+      document.documentElement.scrollTop = document.querySelector(className).offsetTop
     }
   }
 }

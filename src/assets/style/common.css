@@ -7,7 +7,7 @@ html {
   overflow-y: scroll; /* All browsers without overlaying scrollbars */
   -webkit-text-size-adjust: 100%; /* iOS 8+ */
   font: 12px/1.5 tahoma,arial,"\5b8b\4f53";
-  overflow-x: hidden;
+  overflow-x: auto;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

@@ -1,22 +1,38 @@
 export default {
   data() {
     return {
-      logoSrc: require('@/assets/logo.png'),
-      name: '张兴华',
-      ename: 'MarsXH.Chang',
-      headerInfo: [
-        { title: '经 验', score: '4.8' },
-        { title: '协 作', score: '5.0' },
-        { title: '自 学', score: '4.8' }
-      ],
-      headerInfoDetail: [
-        { title: '经验', text: '3年前端开发经验，开发过微信公众号、中小型管理系统、H5-APP等多种项目，大多独立开发前端，参与过后端开发、产品设计、项目的部署维护；' },
-        { title: '协作', text: '团队协作能力，带领过新人，做过技术分享；' },
-        { title: '自学', text: '自我学习能力，除前端技能外，还自学了Docker、Gitlab-CI、MongoDB等；' },
-        { title: '其他', text: '自己开发过一些小项目，包括简单的全栈项目；有自己的服务器。有技术博客(21万+访问量)' }
-      ],
-      isShowQrCode: true,
-      qrCodeSrc: require('@/assets/logo.png')
+      baseInfo: {
+        imgSrc: require('@/assets/img/photo1.jpg'),
+        imgList: [
+          require('@/assets/img/photo1.jpg'),
+          require('@/assets/img/photo2.jpg'),
+          require('@/assets/img/photo3.jpg'),
+          require('@/assets/img/photo4.jpg'),
+          require('@/assets/img/photo5.jpg')
+        ],
+        title: '前端开发工程师-3年-张兴华-MarsXH.Chang-本科',
+        priceTitle: '此商品活动中，请尽快购买！',
+        oldPrice: '99999.00',
+        newPrice: '????0.00',
+        newPriceComment: '就是你想的那个价格！！！',
+        nowAdress: '上海',
+        baseAdress: '黑龙江',
+        skills: ['Vue', 'Node', 'MongoDB', 'Docker', 'Echarts', '装不下了...'],
+        stock: '1',
+        serviceTags: ['正品保证', '极速送货', '永久免费咨询服务'],
+        workHistory: [
+          {
+            company: '上海英业达科技有限公司',
+            time: '2019.04 ~ 2020.05',
+            position: '前端开发'
+          },
+          {
+            company: '上海汉得信息技术股份有限公司',
+            time: '2017.11 ~ 2019.02',
+            position: '前端开发'
+          }
+        ]
+      }
     }
   }
 }

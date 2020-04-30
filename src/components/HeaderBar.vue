@@ -1,8 +1,8 @@
 <template>
   <div class="header-bar-warpper">
     <div class="header-bar d-flex justify-space-between align-center">
-      <div class="d-flex">
-        <img alt="logo" class="header-logo" :src="logoSrc">
+      <div class="d-flex align-center">
+        <img alt="logo" class="header-logo" :src="headerBar.logoSrc">
         <div class="d-flex header-info-box">
           <el-popover
             v-model="isShowInfoPopover"
@@ -11,9 +11,9 @@
             width="255"
             trigger="hover">
             <div slot="reference" class="d-flex">
-              <p class="header-name">{{ name }}<br />{{ ename }}</p>
+              <p class="header-name">{{ headerBar.name }}<br />{{ headerBar.ename }}</p>
               <div class="header-info d-flex align-center">
-                <div v-for="item in headerInfo" :key="item.title" class="header-info-item">
+                <div v-for="item in headerBar.headerInfo" :key="item.title" class="header-info-item">
                   <div class="header-info-title">{{ item.title }}</div>
                   <p class="header-info-score">{{ item.score }}<i class="el-icon-top font-weight-black header-info-score-icon"></i></p>
                 </div>
@@ -24,14 +24,14 @@
               </div>
             </div>
             <div>
-              <div v-for="item in headerInfoDetail" :key="item.title" class="header-info-popover-item">
+              <div v-for="item in headerBar.headerInfoDetail" :key="item.title" class="header-info-popover-item">
                 <p class="header-info-popover-item-label"><i class="el-icon-star-on header-info-score-icon"></i>{{ item.title }}：</p>
                 <p class="header-info-popover-item-text">{{ item.text }}</p>
               </div>
             </div>
           </el-popover>
           <el-popover
-            v-if="isShowQrCode"
+            v-if="headerBar.isShowQrCode"
             v-model="isShowQrCodePopover"
             popper-class="header-qrcode-popover"
             placement="bottom-start"
@@ -40,13 +40,13 @@
             <div slot="reference" class="header-qrcode">
               <div class="header-qrcode-title">订阅号</div>
               <p class="header-qrcode-icons">
-                <img alt="QR Code" class="header-qrcode-small-img" :src="qrCodeSrc">
+                <img alt="QR Code" class="header-qrcode-small-img" :src="headerBar.qrCodeSrc">
                 <i v-if="isShowQrCodePopover" class="el-icon-caret-top header-qrcode-icon"></i>
                 <i v-else class="el-icon-caret-bottom header-qrcode-icon"></i>
               </p>
             </div>
             <div>
-              <img alt="QR Code" class="header-qrcode-popover-img" :src="qrCodeSrc">
+              <img alt="QR Code" class="header-qrcode-popover-img" :src="headerBar.qrCodeSrc">
               <p class="header-qrcode-popover-text">扫一扫，关注订阅号</p>
             </div>
           </el-popover>
@@ -88,9 +88,10 @@ export default {
     height 85px
     .header-logo
       width 162px
-      height 60px
+      height 50px
+      margin-right 17px
     .header-info-box
-      padding 15px 0 0
+      padding 0
       .header-name
         height 38px
         width auto

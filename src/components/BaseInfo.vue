@@ -9,6 +9,7 @@
               v-for="(img, imgIndex) in baseInfo.imgList"
               :key="'img' + imgIndex"
               class="base-info-img-item"
+              @click="changeImg(imgIndex)"
             >
               <img alt="logo" class="base-info-img-item-img" :src="img">
             </li>
@@ -61,8 +62,8 @@
             <span class="base-info-content-count-comment">库存仅剩 {{ baseInfo.stock }} 件，欲购从速！！！</span>
           </div>
           <div class="base-info-submit d-flex">
-            <button class="base-info-submit-buy">立即购买</button>
-            <button class="base-info-submit-add">
+            <button class="base-info-submit-buy" @click="buyNow">立即购买</button>
+            <button class="base-info-submit-add" @click="buyNow">
               <i class="el-icon-shopping-cart-full"></i>
               加入购物车
             </button>
@@ -77,14 +78,18 @@
           </div>
         </div>
       </div>
-      <div>
-        <div>购买历史</div>
+      <div class="base-info-history">
+        <div class="base-info-history-title">
+          <span class="base-info-history-title-line"></span>
+          <span class="base-info-history-title-text">购买历史</span>
+          <span class="base-info-history-title-line"></span>
+        </div>
         <div
           v-for="(work, workIndex) in baseInfo.workHistory"
           :key="'work' + workIndex"
-          class="red-input-warpper"
+          class="base-info-history-item"
         >
-          <p>{{ work.company }}</p>
+          <p style="font-size: 16px;">{{ work.company }}</p>
           <p>{{ work.time }}</p>
           <p>{{ work.position }}</p>
         </div>
@@ -99,38 +104,14 @@ export default {
   mixins: [baseInfoMixin],
   data () {
     return {
-      baseInfo: {
-        imgSrc: require('@/assets/logo.png'),
-        imgList: [
-          require('@/assets/logo.png'),
-          require('@/assets/logo.png'),
-          require('@/assets/logo.png'),
-          require('@/assets/logo.png'),
-          require('@/assets/logo.png')
-        ],
-        title: '前端开发工程师-张兴华-MarsXH.Chang',
-        priceTitle: '此商品活动中，请尽快购买！',
-        oldPrice: '99999.00',
-        newPrice: '????0.00',
-        newPriceComment: '就是你想的那个价格！！！',
-        nowAdress: '上海',
-        baseAdress: '黑龙江',
-        skills: ['Vue', 'Node', 'MongoDB', 'Docker', 'Echarts', '装不下了...'],
-        stock: '1',
-        serviceTags: ['正品保证', '极速送货', '永久免费咨询服务'],
-        workHistory: [
-          {
-            company: '上海英业达科技有限公司',
-            time: '2019.04 ~ 2020.05',
-            position: '前端开发'
-          },
-          {
-            company: '上海汉得信息技术股份有限公司',
-            time: '2017.11 ~ 2019.02',
-            position: '前端开发'
-          }
-        ]
-      }
+    }
+  },
+  methods: {
+    changeImg (index) {
+      this.$set(this.baseInfo, 'imgSrc', this.baseInfo.imgList[index])
+    },
+    buyNow () {
+      document.documentElement.scrollTop = document.querySelector('.detail-contact-title').offsetTop
     }
   }
 }
@@ -278,4 +259,29 @@ export default {
           color #666
           margin 0 15px 5px 0
           cursor pointer
+    .base-info-history
+      .base-info-history-title
+        .base-info-history-title-line
+          display inline-block
+          width 34px
+          height 0
+          border-top 1px #c9c9c9 dotted
+        .base-info-history-title-text
+          display inline-block
+          width 72px
+          text-align center
+      .base-info-history-item
+        display flex
+        flex-direction column
+        justify-content space-between
+        width 140px
+        height 140px
+        margin 10px 0
+        border 1px #c9c9c9 dotted
+        border-radius 5px
+        padding 5px
+        background-color #F06292
+        color #fff
+        font-size 12px
+        font-weight 600
 </style>
